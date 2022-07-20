@@ -24,8 +24,8 @@ namespace adaYazilim.Models
 
                 int bos = (int)(max - vagon.DoluKoltukAdet); // 20
                                                               //vagon.DoluKoltukAdet += train.RezervasyonYapilacakKisiSayisi; //53
-                                                              // treturn.addAyrinti(vagon.Ad, fark);
-                int kisiSayisi = bos - temp;//3
+                                                          // treturn.addAyrinti(vagon.Ad, fark);
+                int kisiSayisi = bos - temp;
                if(bos > 0 && temp>0)
                 {
                     if (kisiSayisi >= 0)
@@ -71,10 +71,15 @@ namespace adaYazilim.Models
                 if (treturn.YerlesimAyrinti.Count != 1 && train.KisilerFarkliVagonlaraYerlestirilebilir) {
                     treturn.YerlesimAyrinti = tempAyrinti;
                 }
+                else if(treturn.YerlesimAyrinti.Count == 1 && train.KisilerFarkliVagonlaraYerlestirilebilir==false)
+                {
+                    treturn.YerlesimAyrinti = tempAyrinti;
+                }
                 
             }
+         
             
-            return result = new JsonResult(treturn);
+            return new JsonResult(treturn);
             
             
             
